@@ -9,6 +9,13 @@ if [[ ! -d backend/venv || ! -d frontend/node_modules ]]; then
   exit 1
 fi
 
+for port in 8000 5173; do
+  if lsof -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1; then
+    echo "Port $port is already in use. Stop whatever is running there and try again."
+    exit 1
+  fi
+done
+
 cleanup() {
   echo
   echo "Shutting down..."
