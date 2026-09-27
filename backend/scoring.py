@@ -11,12 +11,7 @@ SCORE_PRECISION = 4
 
 
 def budget_score(price: float, target_budget: Optional[float] = None) -> float:
-    """How well a price fits the buyer's budget, in [0, 1].
-
-    Under budget is penalized in proportion to the gap; over budget drops to zero
-    across a narrow tolerance band, because a listing a buyer cannot afford is
-    not a useful result.
-    """
+    """How well a price fits the buyer's budget, in [0, 1]."""
     if target_budget is None:
         return NEUTRAL_BUDGET_SCORE
 
@@ -30,11 +25,7 @@ def budget_score(price: float, target_budget: Optional[float] = None) -> float:
 
 
 def recency_scores(listed_dates: Sequence[date]) -> list[float]:
-    """Rank dates against each other: newest 1.0, oldest 0.0.
-
-    Normalizing within the result set rather than against a fixed window keeps
-    the signal meaningful whatever date range a search happens to return.
-    """
+    """Rank dates against each other: newest 1.0, oldest 0.0."""
     if not listed_dates:
         return []
 

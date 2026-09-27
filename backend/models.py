@@ -18,10 +18,7 @@ class ApiModel(BaseModel):
 
 
 class Listing(ApiModel):
-    """One property as it arrives from an MLS feed.
-
-    Frozen because a feed row is a fact: nothing downstream may edit what a feed reported.
-    """
+    """One property as it arrives from an MLS feed; frozen because a feed row is a fact."""
 
     model_config = ConfigDict(frozen=True)
 

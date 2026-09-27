@@ -17,7 +17,7 @@ ListingT = TypeVar("ListingT", bound=Listing)
 
 
 def load_listings() -> tuple[Listing, ...]:
-    """Read and validate the MLS feed per search; at this size that beats owning a cache."""
+    """Read and validate the MLS feed on every search."""
     with DATA_PATH.open(encoding="utf-8") as feed:
         return tuple(Listing.model_validate(row) for row in json.load(feed))
 
@@ -66,12 +66,7 @@ def search(
     page: int = DEFAULT_PAGE,
     page_size: int = DEFAULT_PAGE_SIZE,
 ) -> SearchResponse:
-    """Validate, filter, deduplicate, score and paginate — in that order.
-
-    Deduplication runs before scoring so a property listed by two feeds is ranked
-    once, and scoring runs on the whole filtered set rather than the current page,
-    so recency is normalized against every match instead of whichever ten are on screen.
-    """
+    """Validate, filter, deduplicate, score and paginate — in that order."""
     validate_params(
         min_price=min_price,
         max_price=max_price,

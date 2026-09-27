@@ -66,11 +66,7 @@ export const DEFAULT_FORM_VALUES: SearchFormValues = {
   pageSize: DEFAULT_PAGE_SIZE,
 }
 
-/**
- * The client trusts the API's shape no more than the API trusts the client's
- * input. The `z.ZodType` annotations pin each schema to the interface in
- * `types.ts`, so the two cannot drift apart without a compile error.
- */
+/** The `z.ZodType` pins keep these schemas and `types.ts` from drifting apart. */
 const duplicateRefSchema: z.ZodType<DuplicateRef> = z.object({
   source: z.string(),
   id: z.string(),
