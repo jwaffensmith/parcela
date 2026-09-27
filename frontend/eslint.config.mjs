@@ -31,11 +31,11 @@ export default tseslint.config(
     },
   },
   {
-    files: ['vite.config.ts', 'playwright.config.ts', 'eslint.config.js'],
+    files: ['vite.config.ts', 'playwright.config.ts', 'eslint.config.mjs'],
     languageOptions: { globals: globals.node },
   },
   {
-    files: ['**/*.js'],
+    files: ['**/*.{js,mjs}'],
     extends: [tseslint.configs.disableTypeChecked],
   },
   {
