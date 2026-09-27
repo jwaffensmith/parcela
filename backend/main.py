@@ -10,7 +10,7 @@ from models import HealthResponse, IndexResponse, ListingStatus, SearchResponse
 from search import DEFAULT_PAGE, DEFAULT_PAGE_SIZE, search
 from validation import SearchError
 
-ALLOWED_ORIGINS = ("http://localhost:5173", "http://localhost:3000")
+ALLOWED_ORIGINS = ("http://localhost:5173",)
 BAD_REQUEST = 400
 INTERNAL_ERROR = 500
 
