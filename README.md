@@ -2,6 +2,8 @@
 
 Search smarter, find your next home faster.
 
+By Jenna Waffensmith
+
 A full-stack property listing search service over listings ingested from multiple MLS
 feeds. Python/FastAPI on the back end, React/TypeScript on the front.
 
